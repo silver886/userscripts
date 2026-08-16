@@ -12,8 +12,6 @@
 // ==/UserScript==
 
 (() => {
-  'use strict';
-
   const PREFERRED_LANGS = ['zh-Hant', 'en'];
 
   const CAPTION_STYLE = {

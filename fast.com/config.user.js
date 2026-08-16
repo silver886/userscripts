@@ -6,7 +6,7 @@
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=fast.com
 // @grant       none
 // @run-at      document-start
-// @include     /^https://fast.com(/.*)?$/
+// @include     /^https://fast\.com(/.*)?$/
 // @updateURL   https://raw.githubusercontent.com/silver886/userscripts/master/fast.com/config.meta.js
 // @downloadURL https://raw.githubusercontent.com/silver886/userscripts/master/fast.com/config.user.js
 // ==/UserScript==

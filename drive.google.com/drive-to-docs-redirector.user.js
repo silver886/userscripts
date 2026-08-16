@@ -12,8 +12,6 @@
 // ==/UserScript==
 
 (() => {
-  'use strict';
-
   const REDIRECT_MAP = {
     // Word
     'docx': 'document',

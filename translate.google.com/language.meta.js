@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Google Translate: default target language
+// @name        Google Translate default target language
 // @namespace   https://longhill.io/
 // @version     1.0.0
 // @description This script injects target language
