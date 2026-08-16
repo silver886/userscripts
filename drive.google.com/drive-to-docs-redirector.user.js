@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Google Drive to Docs Redirector
 // @namespace   https://longhill.io/
-// @version     1.1.0
+// @version     1.1.1
 // @description Redirect Office files from Drive viewer to Google Docs/Sheets/Slides editor
 // @icon        https://ssl.gstatic.com/docs/doclist/images/drive_favicon_2026_32dp.png
 // @grant       none
@@ -11,7 +11,7 @@
 // @downloadURL https://raw.githubusercontent.com/silver886/userscripts/master/drive.google.com/drive-to-docs-redirector.user.js
 // ==/UserScript==
 
-(function () {
+(() => {
   'use strict';
 
   const REDIRECT_MAP = {
@@ -38,12 +38,12 @@
 
   const TITLE_SUFFIX = ' - Google Drive';
 
-  function getFileId() {
+  const getFileId = () => {
     const match = window.location.pathname.match(/\/file\/d\/([^/]+)/);
     return match ? match[1] : null;
-  }
+  };
 
-  function getExtensionFromTitle(title) {
+  const getExtensionFromTitle = (title) => {
     if (!title || !title.endsWith(TITLE_SUFFIX)) return null;
 
     const filename = title.slice(0, -TITLE_SUFFIX.length).trim();
@@ -53,9 +53,9 @@
     if (lastDot === -1 || lastDot === filename.length - 1) return null;
 
     return filename.slice(lastDot + 1).toLowerCase();
-  }
+  };
 
-  function doRedirect() {
+  const doRedirect = () => {
     const fileId = getFileId();
     if (!fileId) return false;
 
@@ -67,9 +67,9 @@
 
     window.location.replace(`https://docs.google.com/${target}/d/${fileId}/edit`);
     return true;
-  }
+  };
 
-  function startObserver() {
+  const startObserver = () => {
     if (doRedirect()) return;
 
     let attempts = 0;
@@ -99,7 +99,7 @@
       clearInterval(interval);
       observer.disconnect();
     }, 5000);
-  }
+  };
 
   // Handle initial load
   startObserver();
