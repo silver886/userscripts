@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Anime1.me player optimization
 // @namespace   https://longhill.io/
-// @version     1.0.0
+// @version     1.1.0
 // @description This script add keyboard shortcuts and initiate player
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=anime1.me
 // @grant       none
@@ -20,10 +20,16 @@ document.addEventListener('keydown', (event) => {
 
   if (event.shiftKey) {
     switch (event.code) {
+      case 'KeyH':
+        event.preventDefault();
+        Array.from(document.querySelectorAll('a')).
+          find((v) => (v.textContent.trim() === '全集連結' && /\/\?cat=[0-9]+/.test(v.getAttribute('href') || ''))).
+          click();
+        break;
       case 'KeyN':
         event.preventDefault();
         Array.from(document.querySelectorAll('a')).
-          find((v) => (v.textContent.trim() === '下一集' && /\/\?p=[0-9]+/.test(v.getAttribute('href') || ''))).
+          find((v) => (v.textContent.trim().match(/^下一集/) && /\/\?p=[0-9]+/.test(v.getAttribute('href') || ''))).
           click();
         break;
       case 'KeyP':
